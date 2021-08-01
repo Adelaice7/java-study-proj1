@@ -11,16 +11,6 @@ public class Main {
         System.out.println(".....");
 //        dog.walk();
 //        dog.run();
-
-        Integer x = 5;
-        Integer y = x;
-
-        System.out.println(x);
-        System.out.println(y);
-
-        y += 5;
-
-        System.out.println(x);
-        System.out.println(y);
+        
     }
 }
