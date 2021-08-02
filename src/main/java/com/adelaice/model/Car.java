@@ -1,4 +1,4 @@
-package com.adelaice;
+package com.adelaice.model;
 
 public class Car extends Vehicle {
     private int wheels;

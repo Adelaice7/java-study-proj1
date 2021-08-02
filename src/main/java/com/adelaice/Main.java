@@ -1,16 +1,24 @@
 package com.adelaice;
 
+import com.adelaice.model.*;
+
 public class Main {
 
     public static void main(String[] args) {
 //        TestWhile.readMinMaxNums();
 
-        Animal animal = new Animal("Animal", 1, 1, 5, 5);
+        Dimensions dimensions = new Dimensions(20, 20, 5);
+        Case theCase = new Case("220B", "Dell", "240", dimensions);
 
-        Dog dog = new Dog("Yorkie", 8, 20, 2, 4, 1, 20, "long silky");
-        System.out.println(".....");
-//        dog.walk();
-//        dog.run();
+        Monitor monitor = new Monitor("27inch Beast", "Acer", 27,
+                new Resolution(1024, 768));
+
+        Motherboard motherboard = new Motherboard("BJ-200", "Asus", 4, 6,
+                "v2.44");
+
+        PC pc = new PC(theCase, monitor, motherboard);
+
+        pc.powerUp();
         
     }
 }

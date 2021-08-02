@@ -1,4 +1,4 @@
-package com.adelaice;
+package com.adelaice.model;
 
 public class Convertible extends Car {
     private boolean roofUp;
