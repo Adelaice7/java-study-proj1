@@ -1,51 +1,27 @@
 package com.adelaice;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
 
-    private static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
+        int[] array = new int[] {1,2,3,4,5};
 
-        System.out.println("Enter count: ");
-        int count = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println(Arrays.toString(array));
 
-        int[] array = readIntegers(count);
+        reverse(array);
 
-        int minVal = findMin(array);
-
-        System.out.println(minVal);
-
-        scanner.close();
+        System.out.println(Arrays.toString(array));
     }
 
-    private static int[] readIntegers(int count) {
-        int[] array = new int[count];
+    private static void reverse(int[] array) {
+        int maxIndex = array.length - 1;
+        int halfLength = array.length / 2;
 
-        System.out.println("Enter " + count + " numbers: ");
-        for (int i = 0; i < array.length; i++) {
-            array[i] = scanner.nextInt();
-            scanner.nextLine();
+        for (int i = 0; i < halfLength; i++) {
+            int temp = array[i];
+            array[i] = array[maxIndex - i];
+            array[maxIndex - i] = temp;
         }
-
-        return array;
-    }
-
-    private static int findMin(int[] array) {
-        int min = 0;
-
-        for (int i = 0; i < array.length; i++) {
-            if (i == 0) {
-                min = array[i];
-            }
-
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-
-        return min;
     }
 }
