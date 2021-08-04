@@ -1,5 +1,6 @@
 package com.adelaice;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         boolean quit = false;
-        int choice = 0;
+        int choice;
         printInstructions();
 
         while (!quit) {
@@ -37,6 +38,9 @@ public class Main {
                     searchForItem();
                     break;
                 case 6:
+                    processArrayList();
+                    break;
+                case 7:
                     quit = true;
                     break;
             }
@@ -51,7 +55,8 @@ public class Main {
         System.out.println("\t 3 - To modify an item in the list.");
         System.out.println("\t 4 - To remove an item from the list.");
         System.out.println("\t 5 - To search for an item in the list.");
-        System.out.println("\t 6 - To quit the application.");
+        System.out.println("\t 6 - To process array list.");
+        System.out.println("\t 7 - To quit the application.");
     }
 
     public static void addItem() {
@@ -60,31 +65,39 @@ public class Main {
     }
 
     public static void modifyItem() {
-        System.out.print("Enter item number: ");
-        int itemNum = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter item to replace: ");
+        String oldItem = scanner.nextLine();
 
         System.out.print("Enter new item: ");
         String newItem = scanner.nextLine();
 
-        groceryList.modifyGroceryItem(itemNum, newItem);
+        groceryList.modifyGroceryItem(oldItem, newItem);
     }
 
     public static void removeItem() {
-        System.out.print("Enter item number: ");
-        int itemNumber = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeGroceryItem(itemNumber - 1);
+        System.out.print("Enter item to remove: ");
+        String item = scanner.nextLine();
+        groceryList.removeGroceryItem(item);
     }
 
     public static void searchForItem() {
         System.out.print("Enter item to search: ");
         String item = scanner.nextLine();
-        if (groceryList.findItem(item) != null) {
+
+        if (groceryList.onFile(item)) {
             System.out.println("Found " + item + " in the grocery list.");
         } else {
             System.out.println("Could not find " + item + " in list.");
         }
     }
 
+    public static void processArrayList() {
+        ArrayList<String> newArray = new ArrayList<>();
+        newArray.addAll(groceryList.getGroceryList());
+
+        ArrayList<String> nextArray = new ArrayList<>(groceryList.getGroceryList());
+
+        String[] stringArray = new String[groceryList.getGroceryList().size()];
+        stringArray = groceryList.getGroceryList().toArray(stringArray);
+    }
 }
