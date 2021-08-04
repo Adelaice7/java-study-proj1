@@ -1,6 +1,5 @@
 package com.adelaice;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,52 +7,40 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] array = getIntegers(5);
+        int[] array = readIntegers(5);
 
-        int[] sortedArray = sortIntegers(array);
+        int minVal = findMin(array);
 
-        printArray(sortedArray);
+        System.out.println(minVal);
 
         scanner.close();
     }
 
-    private static int[] getIntegers(int number) {
-        int[] array = new int[number];
+    private static int[] readIntegers(int count) {
+        int[] array = new int[count];
 
-        System.out.println("Enter " + number + " integers.");
-
-        for (int i = 0; i < number; i++) {
+        System.out.println("Enter " + count + " numbers: ");
+        for (int i = 0; i < count; i++) {
             array[i] = scanner.nextInt();
         }
 
         return array;
     }
 
-    private static void printArray(int[] array) {
+    private static int findMin(int[] array) {
+        int min = 0;
+
         for (int i = 0; i < array.length; i++) {
-            System.out.println("Element " + i + ". is value: " + array[i]);
-        }
-    }
+            if (i == 0) {
+                min = array[i];
+            }
 
-    private static int[] sortIntegers(int[] array) {
-        int[] sortedArray = Arrays.copyOf(array, array.length);
-
-        boolean flag = true;
-        int temp;
-
-        while (flag) {
-            flag = false;
-
-            for (int i = 0; i < sortedArray.length-1; i++) {
-                if (sortedArray[i] < sortedArray[i+1]) {
-                    temp = sortedArray[i];
-                    sortedArray[i] = sortedArray[i+1];
-                    sortedArray[i+1] = temp;
-                    flag = true;
-                }
+            if (array[i] < min) {
+                min = array[i];
             }
         }
 
-        return sortedArray;
+        return min;
     }
+
 }
