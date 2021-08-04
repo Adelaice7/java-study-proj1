@@ -7,7 +7,12 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int[] array = readIntegers(5);
+
+        System.out.println("Enter count: ");
+        int count = scanner.nextInt();
+        scanner.nextLine();
+
+        int[] array = readIntegers(count);
 
         int minVal = findMin(array);
 
@@ -20,8 +25,9 @@ public class Main {
         int[] array = new int[count];
 
         System.out.println("Enter " + count + " numbers: ");
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = scanner.nextInt();
+            scanner.nextLine();
         }
 
         return array;
@@ -42,5 +48,4 @@ public class Main {
 
         return min;
     }
-
 }
