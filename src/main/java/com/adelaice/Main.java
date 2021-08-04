@@ -1,28 +1,45 @@
 package com.adelaice;
 
-import com.adelaice.model.Burger;
-import com.adelaice.model.DeluxeBurger;
-import com.adelaice.model.HealthyBurger;
+import java.util.Scanner;
 
 public class Main {
 
+
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        Burger burger = new Burger("Basic", "White", "Beef", 4.59);
+        int[] integers = getIntegers(5);
 
-        burger.addTomato();
-        burger.addLettuce();
-        double price = burger.itemizeBurger();
+        for (int i = 0; i < integers.length; i++) {
+            System.out.println("Element " + i + " is of value: " + integers[i]);
+        }
 
-        HealthyBurger healthyBurger = new HealthyBurger("Beyond Burger meat", 5.99);
-        healthyBurger.addCheese();
-        healthyBurger.addSauce();
+        System.out.println("Average is " + getAverage(integers));
+    }
 
-        System.out.println(healthyBurger.itemizeBurger());
+    public static int[] getIntegers(int number) {
+        System.out.println("Enter " + number + " integers!");
 
-        System.out.println("----");
+        int[] values = new int[number];
 
-        DeluxeBurger db = new DeluxeBurger();
-        System.out.println(db.itemizeBurger());
+        for (int i = 0; i < values.length; i++) {
+            values[i] = scanner.nextInt();
+        }
+
+        return values;
+    }
+
+    public static double getAverage(int[] array) {
+        double average = 0;
+        int sum = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+
+        average = sum / (double) array.length;
+
+        return average;
     }
 }
