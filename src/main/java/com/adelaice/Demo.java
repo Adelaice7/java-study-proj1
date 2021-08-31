@@ -3,6 +3,7 @@ package com.adelaice;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Scanner;
 
 public class Demo {
 
@@ -31,6 +32,8 @@ public class Demo {
         addInOrder(placesToVisit, "Alice Springs");
         addInOrder(placesToVisit, "Paris");
         printList(placesToVisit);
+
+        visit(placesToVisit);
     }
 
     private static void printList(LinkedList<String> list) {
@@ -68,4 +71,57 @@ public class Demo {
         stringListIterator.add(newCity);
         return true;
     }
+
+    private static void visit(LinkedList<String> cities) {
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+
+        ListIterator<String> listIterator = cities.listIterator();
+
+        if (cities.isEmpty()) {
+            System.out.println("No cities in the list.");
+            return;
+        } else {
+            System.out.println("Now visiting " + listIterator.next());
+            printMenu();
+        }
+
+        while (!quit) {
+            int action = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (action) {
+                case 0:
+                    System.out.println("Bye!");
+                    quit = true;
+                    break;
+                case 1:
+                    if (listIterator.hasNext()) {
+                        System.out.println("Now visiting " + listIterator.next());
+                    } else {
+                        System.out.println("Reached the end of list.");
+                    }
+                    break;
+                case 2:
+                    if (listIterator.hasPrevious()) {
+                        System.out.println("Now visiting " + listIterator.previous());
+                    } else {
+                        System.out.println("You are at the start of the list.");
+                    }
+                    break;
+                case 3:
+                    printMenu();
+                    break;
+            }
+        }
+    }
+
+    private static void printMenu() {
+        System.out.println("Available actions:\nPress");
+        System.out.println("0 - to quit");
+        System.out.println("1 - go to next city");
+        System.out.println("2 - go to previous city");
+        System.out.println("3 - print menu");
+    }
+
 }
