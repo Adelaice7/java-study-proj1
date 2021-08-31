@@ -1,22 +1,30 @@
 package com.adelaice;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-        Bank bank = new Bank("National American Bank");
+        Customer customer = new Customer("Joe", 54.96);
+        Customer anotherCustomer = customer;
+        anotherCustomer.setBalance(12.18);
 
-        bank.addNewBranch("Adelaice");
-        bank.addCustomer("Adelaice", "Tim", 40.5);
-        bank.addCustomer("Adelaice", "Mike", 20.55);
-        bank.addCustomer("Adelaice", "Joe", 30.15);
+        System.out.println("Balance for customer: " + customer.getName() + " is " + customer.getBalance());
 
-        bank.addNewBranch("Sydney");
-        bank.addCustomer("Sydney", "Bob", 150.54);
 
-        bank.addCustomerTransaction("Adelaice", "Tim", 44.21);
-        bank.addCustomerTransaction("Adelaice", "Tim", 123.17);
-        bank.addCustomerTransaction("Adelaice", "Tim", 2.54);
+        ArrayList<Integer> intList = new ArrayList<>();
 
-        bank.listCustomers("Adelaice", true);
+        intList.add(1);
+        intList.add(3);
+        intList.add(4);
+
+        for (int i = 0; i < intList.size(); i++) {
+            System.out.println(i + ": " + intList.get(i));
+        }
+
+        intList.add(1, 2);
+        for (int i = 0; i < intList.size(); i++) {
+            System.out.println(i + ": " + intList.get(i));
+        }
     }
 }
